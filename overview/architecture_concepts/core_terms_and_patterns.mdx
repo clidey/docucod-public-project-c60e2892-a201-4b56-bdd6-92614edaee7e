@@ -3,4 +3,180 @@ title: "Core Concepts & Terminology"
 description: "Defines essential terms (e.g., scalability, CAP theorem, consistency models) and architectural principles. Helps users build a mental model before diving deeper into solutions and applications."
 ---
 
-*This page will automatically be generated from the codebase*
+# Core Concepts & Terminology
+
+Understanding core system design concepts and terminology is fundamental when building large-scale, scalable, and reliable systems. This guide introduces essential definitions, architectural principles, and patterns that form the mental model needed before diving into implementation or solution specifics.
+
+---
+
+## Scalability
+
+**Scalability** measures a system's capacity to handle increased load by adding resources, whether vertically or horizontally, with proportional performance gains. It enables your system to meet growing demands without degrading user experience.
+
+- **Vertical Scaling (Scaling Up)**: Enhancing capacity by upgrading existing hardware (CPU, RAM).
+- **Horizontal Scaling (Scaling Out)**: Adding more nodes (servers) to distribute the load.
+
+A system with good scalability increases throughput and maintains low latency under growing demand.
+
+## Performance
+
+Performance refers to how fast a system responds or completes work for a single user request. Poor performance means slow response times, whereas scalability addresses maintaining performance as load increases.
+
+## Latency and Throughput
+
+- **Latency**: Time taken for an operation or request to complete.
+- **Throughput**: Number of such operations or requests completed per unit time.
+
+Balancing these metrics is critical; ideally, maximize throughput while keeping latency within acceptable bounds.
+
+## Availability vs Consistency
+
+In distributed systems, **Availability** and **Consistency** represent a key tradeoff, especially under network partitions, described by the **CAP Theorem**.
+
+### CAP Theorem
+
+States that a distributed system can only guarantee two of the following three at the same time:
+
+1. **Consistency (C)**: Every read receives the latest write or an error.
+2. **Availability (A)**: Every request receives a response (not necessarily the latest data).
+3. **Partition Tolerance (P)**: The system continues operating despite communication breakdowns.
+
+Since partition tolerance is essential due to unreliable networks, systems must trade off between consistency and availability.
+
+### Consistency Models
+
+#### Weak Consistency
+Reads may or may not see the most recent writes immediately. Suitable in real-time systems where slight delays are acceptable (e.g., video calls).
+
+#### Eventual Consistency
+Reads will see the latest writes eventually (milliseconds delay). Used in highly available, large distributed systems like DNS.
+
+#### Strong Consistency
+Reads always reflect the latest writes. Required in transactional systems like databases.
+
+## Availability Patterns
+
+Methods to support system availability include **Fail-over** and **Replication**.
+
+- **Fail-over**: Standby components take over upon failures.
+  - Active-Passive: One active server; standby takes over if failure occurs.
+  - Active-Active: All servers actively handle requests; if one fails, others continue.
+
+- **Replication**: Duplicating data across nodes to handle load and improve reliability.
+
+## Caching
+
+Caching improves performance by storing frequently accessed data closer to the consumer:
+
+- Can be client-side, server-side, or layered within the system architecture.
+- Common forms include CDN caching, Web server caching, application-level caching, and database caching.
+
+When to update caches is a critical challenge, with popular strategies such as:
+
+- **Cache-aside (Lazy loading)**: Application looks in the cache, fetches from database if miss, then updates cache.
+- **Write-through**: Writes go through cache and synchronously update database.
+- **Write-behind (Write-back)**: Writes update cache immediately and asynchronously update database.
+- **Refresh-ahead**: Cache entries are refreshed before expiration based on access patterns.
+
+## Database Scaling Techniques
+
+- **Master-slave replication**: Master handles writes, slaves serve reads.
+- **Master-master replication**: Multiple masters handle reads/writes with synchronization.
+- **Federation**: Functional partitioning into separate databases.
+- **Sharding**: Splitting a database into smaller parts based on data.
+- **Denormalization**: Redundant data copies to speed up read performance.
+- **SQL tuning**: Optimize schema, indices, joins, and queries for performance.
+
+## NoSQL Databases
+
+Non-relational alternatives categorized as:
+
+- **Key-value stores**: Simple, fast data access by key.
+- **Document stores**: Store documents with flexible schemas.
+- **Wide column stores**: Column-oriented large-scale data storage.
+- **Graph databases**: Optimized for complex relationships.
+
+## Communication Patterns
+
+- **RPC (Remote Procedure Call)**: Exposes behavior as callable procedures.
+- **REST (Representational State Transfer)**: Manipulates resources via stateless operations, encouraging loose coupling.
+
+## Security Principles
+
+- Encrypt data in transit and at rest.
+- Sanitize and validate user inputs to prevent injection attacks.
+- Use principle of least privilege for permissions.
+
+## Appendix: Latency Numbers Every Programmer Should Know
+
+Provides context on latency for operations from L1 cache access (~0.5 ns) to network round trips (~150 ms), helping to reason about system performance bottlenecks.
+
+---
+
+For deeper dives and related architectural techniques: see the [System Design Topics](README.md#index-of-system-design-topics) page.
+
+
+## Helpful Diagrams
+
+```mermaid
+graph TD
+  A[Client] --> B[Web Server (Reverse Proxy)]
+  B --> C[API Server]
+  C --> D[Cache Layer]
+  C --> E[Database Cluster]
+  E -->|Replication| F[Read Replicas]
+  E -->|Master| G[Write Node]
+
+  classDef cache fill:#f9f,stroke:#333,stroke-width:2px;
+  class D cache;
+```
+
+---
+
+## Practical Tips
+
+- Always consider the tradeoffs — there is no perfect system.
+- Start with simplified correctness; optimize after measuring bottlenecks.
+- Prioritize user-centric goals like latency and availability over theoretical elegance.
+- Use incremental scaling strategies (benchmark → profile → optimize → repeat).
+
+<Check>
+Leverage caching to reduce latency and database load.
+</Check>
+<Tip>
+Understand the CAP theorem and choose consistency vs availability based on business needs.
+</Tip>
+<Warning>
+Over-complex systems without proper benchmarking can add unnecessary risk.
+</Warning>
+
+---
+
+## Code Example: Simple LRU Cache Node
+
+```python
+class Node(object):
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.prev = None
+        self.next = None
+```
+
+This underlies many cache implementations supporting fast lookup and eviction.
+
+---
+
+## Further Reading
+
+* [System Design Topics](README.md#index-of-system-design-topics)
+* [Latency Numbers Every Programmer Should Know](README.md#latency-numbers-every-programmer-should-know)
+* [CAP Theorem Revisited](http://robertgreiner.com/2014/08/cap-theorem-revisited)
+* [Cache Strategies](README.md#cache)
+* [Load Balancing](README.md#load-balancer)
+
+---
+
+
+---
+
