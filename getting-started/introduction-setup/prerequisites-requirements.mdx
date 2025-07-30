@@ -3,4 +3,91 @@ title: "Prerequisites & System Requirements"
 description: "Outlines all required tools, software, and environment considerations for using the materials in this repository. Covers requirements for reading guides, accessing code notebooks (Jupyter/IPython), and working with flashcards or diagrams, ensuring users are prepared for a smooth setup."
 ---
 
-*This page will automatically be generated from the codebase*
+# Prerequisites & System Requirements
+
+This document outlines all necessary tools, software, and environment considerations for effectively using the system design primer materials. It covers the requirements to read guides, access and run code notebooks, and work with flashcards or visual study resources to ensure a smooth setup experience.
+
+---
+
+## 1. System Requirements
+
+To successfully use the study materials in this repository, ensure your system meets the following minimum specifications:
+
+- **Operating System:** Windows 10 or later, macOS 10.13 or later, or most Linux distributions
+- **Memory:** Minimum 4 GB RAM; 8 GB or more recommended for smooth running of Jupyter notebooks
+- **Storage:** At least 2 GB free disk space for cloning the repository and dependencies
+- **Web Browser:** Latest versions of Chrome, Firefox, Edge, or Safari for reading guides and interacting with online content
+
+
+## 2. Software Dependencies
+
+### For Viewing and Running Content
+
+- **Git:** To clone the repository
+- **Python 3.7+** with the following packages for running Jupyter/IPython notebooks:
+  - Jupyter Notebook or JupyterLab
+  - `mrjob` (for MapReduce simulation code samples)
+  - `ipykernel`, `nbconvert` (for notebook support)
+- **Anki:** For flashcard study using the provided decks
+- **Markdown Reader:** Most code and guides are in markdown format, any modern markdown viewer will suffice
+
+### Recommended Installation Steps
+
+1. Install Python:
+   - Download the latest Python 3 version from [python.org](https://www.python.org/downloads/).
+2. Install Jupyter:
+   ```bash
+   pip install notebook
+   ```
+3. Clone the repository:
+   ```bash
+   git clone https://github.com/donnemartin/system-design-primer.git
+   ```
+4. Install dependencies for notebooks (optional):
+   ```bash
+   pip install mrjob ipykernel nbconvert
+   ```
+5. Install Anki for flashcards:
+   - Download from [Anki's official site](https://apps.ankiweb.net/).
+
+## 3. Access Requirements
+
+- Internet access is recommended for:
+  - Cloning and updating the repository
+  - Accessing linked external resources and references
+- No accounts or special credentials are required to access or use any part of this repository.
+
+
+## 4. Network Requirements
+
+- No special firewall or open ports needed for reading the guides or running notebooks locally.
+- For downloading dependencies, ensure your network allows outbound HTTPS connections.
+
+## 5. Additional Considerations
+
+- **Notebook Compatibility:** The IPython/Jupyter notebooks are compatible with Jupyter Notebook and JupyterLab. Using JupyterLab is recommended for better user experience.
+- **Offline Use:** Once cloned and dependencies installed, the materials can be used offline.
+- **Updates:** Occasionally pull updates from the GitHub repository to stay current with improvements and additional materials.
+
+---
+
+## Troubleshooting
+
+- **Issue:** Unable to run notebooks due to missing packages
+  - **Solution:** Make sure you install all required Python packages listed above using `pip`.
+
+- **Issue:** Anki flashcard deck won’t import
+  - **Solution:** Use the latest Anki version. If issues persist, see the [Extended FAQ](https://github.com/donnemartin/system-design-primer#anki-flashcard-import-issues).
+
+- **Issue:** Cannot clone repository or download files
+  - **Solution:** Check your internet connection and firewall settings.
+
+If you need further assistance, visit the [Getting Help](https://github.com/donnemartin/system-design-primer#where-to-get-help) section.
+
+---
+
+## Summary
+
+This Prerequisites and System Requirements page ensures you have the essential software and hardware setup before diving into the system design primer. By fulfilling the outlined requirements, you will optimize your experience working through guides, running interactive notebooks, and studying flashcards.
+
+---
