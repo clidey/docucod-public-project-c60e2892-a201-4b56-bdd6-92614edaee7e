@@ -3,4 +3,206 @@ title: "System Design Best Practices"
 description: "Key principles for designing robust and scalable systems. Summarizes common patterns, anti-patterns, and trade-offs, helping users internalize what interviewers are seeking and how to apply this knowledge to various scenarios."
 ---
 
-*This page will automatically be generated from the codebase*
+# System Design Best Practices
+
+Unlock the essential principles for crafting robust, scalable systems. This guide distills proven design patterns, common pitfalls, and critical trade-offs that empower you to architect systems confidently and excel in technical interviews.
+
+---
+
+## 1. Understanding the System Design Journey
+
+Designing scalable systems is an iterative process, not a one-and-done task. Approach your design using cycles of:
+
+- **Benchmarking & Load Testing:** Identify real-world performance constraints.
+- **Profiling:** Detect bottlenecks in CPU, memory, I/O, or networking.
+- **Refinement:** Adapt architecture by evaluating trade-offs and implementing scalability measures.
+- **Repeat:** Iterate to continuously evolve and improve.
+
+> Emphasize *user needs* at every stage by focusing on performance under expected workload, availability, and system evolution.
+
+---
+
+## 2. Core Best Practices for Scalable Systems
+
+### 2.1 Start Simple, Then Scale
+
+- Begin with the simplest architecture (e.g., single server with vertical scaling).
+- Monitor system health vigilantly to understand where bottlenecks lie.
+- As workload grows, evolve towards horizontal scaling to achieve cost-efficient growth.
+
+### 2.2 Decouple Components to Allow Independent Scaling
+
+- Separate static content storage (use object stores like Amazon S3).
+- Isolate compute (web servers, application servers) and data stores (databases).
+- Introduce layers such as caching, message queues, and databases with replication.
+
+### 2.3 Use Load Balancers to Distribute Traffic
+
+- Implement load balancers (e.g., AWS ELB, HAProxy) to spread requests across multiple instances.
+- Choose active-active or active-passive configurations for high availability.
+- Terminate SSL at the load balancer for reduced backend server load.
+
+### 2.4 Introduce Caching Layers
+
+- Cache frequently accessed data to reduce expensive database hits.
+- Options include in-memory caches (Redis, Memcached), CDN caching, web server caching.
+- Employ cache update strategies suited for your data, such as cache-aside, write-through, or write-behind.
+
+### 2.5 Design for Statelessness
+
+- Make web and application servers stateless when possible.
+- Store session information in a shared cache or database.
+- Stateless servers simplify horizontal scaling and autoscaling.
+
+### 2.6 Use Asynchronous Processing for Lengthy Tasks
+
+- Offload long-running or batch work to background workers with queues.
+- This reduces request latency and increases system responsiveness.
+
+### 2.7 Manage Relational Data with Considered Scaling Techniques
+
+- Begin with RDBMS like MySQL when relational integrity and transactions are key.
+- Employ master-slave replication to separate read and write workloads.
+- Use federation (functional partitioning) or sharding to split data when datasets and traffic grow.
+- Consider denormalization and SQL tuning to optimize query performance.
+
+### 2.8 Evaluate NoSQL Alternatives
+
+- For high-volume, less structured data, consider NoSQL stores: key-value stores, document stores, wide column stores, or graph databases.
+- Prioritize based on your access patterns, consistency and scalability needs.
+
+### 2.9 Automate Infrastructure and Monitoring
+
+- Use autoscaling groups to dynamically add/remove instances based on traffic.
+- Automate deployment and configuration with tools like Chef, Puppet, or Ansible.
+- Monitor host-level (CPU, memory, disk), application-level, and external metrics.
+- Use alerting tools (PagerDuty, Sentry) to pre-emptively catch issues.
+
+### 2.10 Prepare for Failure and Build Resilience
+
+- Employ failover mechanisms, multi-AZ deployment, and replicas to ensure high availability.
+- Consider the CAP theorem trade-offs; design for your application's consistency and availability needs.
+- Encrypt data in transit and at rest to maintain security.
+
+---
+
+## 3. Practical User Workflow: Scaling a Service on AWS
+
+Start from a minimal setup with a single server handling all workloads. As user count grows:
+
+1. **Separate Storage**: Move static files to object storage (S3) for scalability and durability.
+2. **Database Separation**: Migrate MySQL database off the web server to dedicate resources.
+3. **Security Setup:** Implement VPC subnetting and restrict ports; secure instances and communication.
+4. **Horizontal Scaling**:
+    - Front web servers with a load balancer.
+    - Add application servers to handle business logic separately.
+5. **Caching:**
+    - Add in-memory caches for frequently accessed data.
+    - Use read replicas to reduce write-master load.
+6. **Auto Scaling:**
+    - Use AWS autoscaling groups to dynamically adjust capacity.
+7. **Advanced Scaling:**
+    - Shard databases and implement data warehousing for large datasets.
+    - Migrate appropriate data to NoSQL systems when relational overhead grows too large.
+8. **Queue & Worker Model:**
+    - Decouple processes using queues for asynchronous and batch jobs.
+
+---
+
+## 4. Common Pitfalls and How to Avoid Them
+
+- **Ignoring Bottlenecks:** Monitor from day one to catch early performance issues.
+- **Underestimating Complexity:** Each scaling step increases architectural complexity.
+- **Single Points of Failure:** Avoid by introducing redundancy at every critical layer.
+- **Poor Caching Strategies:** Stale or inconsistent cache data can cause errors and user frustration.
+- **Not Designing for Statelessness:** Stateful servers limit the ability to scale out.
+- **Scaling Only Vertically:** Eventually becomes cost-prohibitive and insufficient.
+- **Security after the Fact:** Integrate security and encryption early, not as an add-on.
+
+---
+
+## 5. Tips and Best Practices
+
+- **Automate everything** – reduces human error and enables faster scaling.
+- **Emphasize monitoring & alerting** – knowing system health in real-time is crucial.
+- **Use managed services where possible** – focus your efforts on the application, not infrastructure.
+- **Benchmark frequently** – valid assumptions can quickly become invalid.
+- **Prepare to iterate** – refining architecture is an ongoing endeavor.
+
+---
+
+## 6. Additional Resources
+
+For deeper dives into design patterns, trade-offs, and examples, consult these key documentation and resources:
+
+- [System Design Topics Index](https://github.com/donnemartin/system-design-primer#index-of-system-design-topics)
+- [Design a System that Scales to Millions of Users on AWS](https://github.com/donnemartin/system-design-primer/blob/main/solutions/system_design/scaling_aws/README.md)
+- [Database Scaling Patterns](https://github.com/donnemartin/system-design-primer#relational-database-management-system-rdbms)
+- [Caching Strategies](https://github.com/donnemartin/system-design-primer#cache)
+- [Load Balancing](https://github.com/donnemartin/system-design-primer#load-balancer)
+- [Horizontal Scaling](https://github.com/donnemartin/system-design-primer#horizontal-scaling)
+- [Security Best Practices](https://github.com/donnemartin/system-design-primer#security)
+
+---
+
+## 7. Summary Diagram: Scaling Architecture on AWS
+
+```mermaid
+flowchart TD
+
+    subgraph User Access Layer
+        Browser["User Client/Application"]
+        Browser -->|HTTP(S) requests| DNS["DNS Service (Route 53)"]
+        DNS --> LB["Load Balancer (ELB/HAProxy)"]
+    end
+
+    subgraph Web and Application Layer
+        LB --> WS["Multiple Web Servers (stateless)"]
+        WS --> AS["Application Servers"]
+        AS --> Cache["Memory Cache (Redis/Memcached)"]
+    end
+
+    subgraph Data Layer
+        AS --> DBMaster["MySQL Write Master"]
+        DBMaster --> DBReplicas["MySQL Read Replicas"]
+        AS --> ObjStore[S3["Object Store for Static Content"]]
+        AS --> Queue["Message Queue (Amazon SQS, RabbitMQ)"]
+        Queue --> Workers["Background Workers"]
+    end
+
+    subgraph Monitoring and Security
+        LB -.-> Monitoring["Monitoring & Alerting Systems"]
+        WS -.-> Security["Security (Firewalls, VPC)"]
+        DBMaster -.-> Encryption["Encryption in transit & at rest"]
+    end
+
+    style Cache fill:#e7f3fe,stroke:#0366d6,stroke-width:2px
+    style LB fill:#f0f4f8,stroke:#222,stroke-width:2px
+    style Workers fill:#fafafa,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5
+
+```
+
+---
+
+## 8. Troubleshooting Common Issues
+
+- **Databases exhibit high CPU/Memory Usage**
+  - Check query plans, optimize indexes.
+  - Add read replicas or scale vertically.
+- **Cache Misses Occur Frequently**
+  - Evaluate cache key design.
+  - Review TTL settings.
+- **Load Balancer Overloaded or Single Point of Failure**
+  - Add redundant load balancers.
+  - Adjust routing policies.
+- **Autoscaling Delays Leading to Latency Spikes**
+  - Tune CloudWatch metrics and thresholds.
+  - Pre-warm instances if possible.
+- **Data Inconsistency in Distributed Cache and DB**
+  - Choose appropriate cache invalidation strategies.
+  - Consider read-through or write-through caching.
+
+
+---
+
+This best practices guide serves as a foundational compass to help design scalable, available, and maintainable systems. Whether prepping for interviews or architecting production applications, applying these principles will enhance your confidence and success.
