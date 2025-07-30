@@ -1,0 +1,180 @@
+{
+  "background": {
+    "decoration": "gradient"
+  },
+  "colors": {
+    "dark": "#1E3A8A",
+    "light": "#60A5FA",
+    "primary": "#60A5FA"
+  },
+  "favicon": "/favicon.svg",
+  "fonts": {
+    "family": "Montserrat",
+    "format": "woff2",
+    "source": "https://fonts.gstatic.com/s/googlesansflex/v5/t5sJIQcYNIWbFgDgAAzZ34auoVyXkJCOvp3SFWJbN5hF8Ju1x6sKCyp0l9sI40swNJwGpVd4AZzz0v6lJ4qFXNZhGjLvDSkV4USKMo6qQzwliVdHAy9jxTDHg_ugnAakpwGc-cxgUqDCIUI.woff2"
+  },
+  "icons": {
+    "library": "fontawesome"
+  },
+  "logo": {
+    "dark": "./logo/logo.svg",
+    "light": "./logo/logo.svg"
+  },
+  "name": "The System Design Primer",
+  "navigation": {
+    "tabs": [
+      {
+        "groups": [
+          {
+            "group": "Product Essence \u0026 Value Proposition",
+            "pages": [
+              "overview/intro_value/what_is_primer",
+              "overview/intro_value/who_is_it_for",
+              "overview/intro_value/value_prop_learning_journey"
+            ]
+          },
+          {
+            "group": "Architecture \u0026 Core Concepts",
+            "pages": [
+              "overview/architecture_concepts/system_design_overview",
+              "overview/architecture_concepts/core_terms_and_patterns",
+              "overview/architecture_concepts/how_primer_is_organized"
+            ]
+          },
+          {
+            "group": "Features \u0026 User Workflows",
+            "pages": [
+              "overview/feature_workflows/quickstart_workflow",
+              "overview/feature_workflows/interview_practice_features",
+              "overview/feature_workflows/integration_and_external_resources"
+            ]
+          }
+        ],
+        "tab": "Overview"
+      },
+      {
+        "groups": [
+          {
+            "group": "Introduction \u0026 Setup",
+            "pages": [
+              "getting-started/introduction-setup/project-overview",
+              "getting-started/introduction-setup/prerequisites-requirements",
+              "getting-started/introduction-setup/installation-access"
+            ]
+          },
+          {
+            "group": "Using the Study Materials",
+            "pages": [
+              "getting-started/resources-usage/notebooks-first-run",
+              "getting-started/resources-usage/anki-flashcards",
+              "getting-started/resources-usage/visual-guides"
+            ]
+          },
+          {
+            "group": "Validation \u0026 Troubleshooting",
+            "pages": [
+              "getting-started/validation-support/first-validation",
+              "getting-started/validation-support/troubleshooting-common-issues"
+            ]
+          }
+        ],
+        "tab": "Getting Started"
+      },
+      {
+        "groups": [
+          {
+            "group": "Core Study Workflows",
+            "pages": [
+              "guides/core-study-workflows/getting-started-system-design",
+              "guides/core-study-workflows/creating-your-interview-prep-plan",
+              "guides/core-study-workflows/using-anki-flashcards-effectively"
+            ]
+          },
+          {
+            "group": "Interview Question Patterns \u0026 Solutions",
+            "pages": [
+              "guides/interview-question-patterns/approaching-system-design-questions",
+              "guides/interview-question-patterns/sample-system-design-walkthroughs",
+              "guides/interview-question-patterns/solving-object-oriented-questions"
+            ]
+          },
+          {
+            "group": "Best Practices \u0026 Real-World Patterns",
+            "pages": [
+              "guides/best-practices-real-world/system-design-best-practices",
+              "guides/best-practices-real-world/using-reference-architectures"
+            ]
+          }
+        ],
+        "tab": "Guides"
+      },
+      {
+        "groups": [
+          {
+            "group": "Architecture Foundations",
+            "pages": [
+              "concepts/architecture-foundations/core-system-concepts",
+              "concepts/architecture-foundations/architecture-patterns",
+              "concepts/architecture-foundations/scalability-and-performance"
+            ]
+          },
+          {
+            "group": "Data Models \u0026 Storage",
+            "pages": [
+              "concepts/data-models-and-stores/data-modeling-basics",
+              "concepts/data-models-and-stores/databases-consistency-availability",
+              "concepts/data-models-and-stores/caching-strategies"
+            ]
+          },
+          {
+            "group": "Security \u0026 Reliability Models",
+            "pages": [
+              "concepts/security-and-reliability/security-principles",
+              "concepts/security-and-reliability/availability-and-fault-tolerance"
+            ]
+          },
+          {
+            "group": "Integration \u0026 Communication Patterns",
+            "pages": [
+              "concepts/integration-and-communication/api-communication",
+              "concepts/integration-and-communication/integration-patterns"
+            ]
+          }
+        ],
+        "tab": "Concepts"
+      },
+      {
+        "groups": [
+          {
+            "group": "Getting Started \u0026 Common Questions",
+            "pages": [
+              "faq/general-usage-faq/what-is-this-repo-for",
+              "faq/general-usage-faq/do-i-need-to-learn-everything",
+              "faq/general-usage-faq/how-to-use-flashcards"
+            ]
+          },
+          {
+            "group": "Troubleshooting \u0026 Optimization",
+            "pages": [
+              "faq/troubleshooting-common-issues/troubleshooting-system-design-solution-files",
+              "faq/troubleshooting-common-issues/optimizing-study-efficiency",
+              "faq/troubleshooting-common-issues/anki-flashcard-import-issues"
+            ]
+          },
+          {
+            "group": "Support \u0026 Community Resources",
+            "pages": [
+              "faq/support-community-help/where-to-get-help",
+              "faq/support-community-help/contribution-faq"
+            ]
+          }
+        ],
+        "tab": "FAQ"
+      }
+    ]
+  },
+  "styling": {
+    "codeblocks": "dark",
+    "eyebrows": "breadcrumbs"
+  }
+}
