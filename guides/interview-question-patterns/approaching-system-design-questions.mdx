@@ -3,4 +3,103 @@ title: "How to Approach System Design Interview Questions"
 description: "A stepwise framework for breaking down open-ended system design problems, covering requirements gathering, high-level design, in-depth component analysis, and scaling strategies. Includes practical examples to build interview confidence."
 ---
 
-*This page will automatically be generated from the codebase*
+## How to Approach System Design Interview Questions
+
+This guide provides a stepwise framework for systematically tackling open-ended system design interview questions. It helps you confidently break down complex problems into manageable parts, covering requirements gathering, high-level design, core component analysis, and scaling strategies.
+
+---
+
+### 1. Understand the Task and Set Expectations
+
+- **Goal:** Clearly define the problem space and what the system should achieve.
+- **Action:** Ask clarifying questions (if possible) or state assumptions such as user base size, data volume, read/write ratios, and performance targets.
+- **Outcome:** A scoped problem statement with a set of use cases and constraints to guide your design.
+
+### 2. Stepwise Framework to Break Down Design Problems
+
+#### Step 1: Gather Requirements and Constraints
+
+- Identify primary use cases (e.g., core user actions, system features).
+- Clarify constraints and assumptions such as traffic distribution, availability requirements, freshness of data, and storage limits.
+- Perform rough usage calculations to understand system load and data size.
+
+#### Step 2: Create High-Level Design
+
+- Sketch the major components and their interactions.
+- Include clients, servers, databases, caches, proxy layers, APIs, and any other relevant parts.
+- Keep the scope broad but focused on solving core use cases first.
+
+#### Step 3: Design Core Components
+
+- Dive deep into critical modules. For instance:
+  - How data is stored and accessed (“SQL vs NoSQL” decisions).
+  - Data ingestion and processing pipelines.
+  - Indexing and query services.
+  - Handling duplicates, caching, and lookup optimizations.
+- Consider practical aspects like asynchronous processing and queues to avoid bottlenecks.
+
+#### Step 4: Address Scalability and Bottlenecks
+
+- Identify potential load hotspots in the initial design.
+- Discuss how to scale horizontally (adding servers) and vertically (upgrading resources).
+- Introduce load balancers, caching layers, read replicas, sharding, and CDN if applicable.
+- Note trade-offs: performance vs cost, complexity vs flexibility, consistency vs availability.
+- Emphasize iterative testing: benchmark, profile, optimize, and repeat.
+
+---
+
+### 3. Practical Examples and Insight
+
+- Use common scenario baselines to illustrate design choices.
+- For instance, designing a web crawler involves:
+  - Avoiding infinite loops through prioritizing URLs and detecting duplicates.
+  - Using NoSQL key-value stores for fast lookups.
+  - Separating responsibilities with queues for reverse indexing and document snippet generation.
+  - Supporting high availability and rapid query processing.
+
+- Take candidate questions into real design exercises such as those in the [system design primer GitHub repo](https://github.com/donnemartin/system-design-primer).
+
+
+### 4. Best Practices and Tips
+
+- **Clarify assumptions early:** Show your interviewer you are thinking critically about the problem space.
+- **Start from simple, high-level ideas:** Avoid jumping prematurely into complex implementations.
+- **Address scalability last but thoughtfully:** Begin with a working baseline; then propose iterative optimizations.
+- **Use diagrams during explanation:** Visualizing components and data flows improves communication.
+- **Discuss trade-offs openly:** Always mention the pros and cons for your design decisions.
+- **Use asynchronous processing where appropriate:** Avoid blocking flows to improve throughput and responsiveness.
+- **Cache popular data:** This reduces load on core services and improves latency.
+- **Ensure fault tolerance:** Consider what happens when parts fail and how to recover.
+
+---
+
+### 5. Troubleshooting Common Pitfalls
+
+- **Undefined scope:** Always verify problem boundaries and key features.
+- **Ignoring load and storage calculations:** Missing usage estimates can lead to unrealistic designs.
+- **Overcomplicating early design:** Complex details should be for later stages.
+- **Neglecting failure scenarios:** Designing for failure is critical to avoid downtime.
+- **Lack of validation:** Propose methods to benchmark and profile to identify bottlenecks.
+
+---
+
+### 6. Next Steps and Related Learning
+
+- **Practice multiple system design questions:** Explore examples like web crawlers, social feeds, caching systems, and data pipelines.
+- **Expand knowledge on key topics:** Caching strategies, database scaling patterns, communication protocols (REST vs RPC), and consistency models.
+- **Use community resources:** Refer to the [System Design Primer](https://github.com/donnemartin/system-design-primer) for detailed examples.
+- **Develop diagrams:** Visual communication using Mermaid.js or white-boarding improves understanding.
+- **Study scalability and performance trade-offs:** Understand vertical vs horizontal scaling, latency vs throughput, and CAP theorem.
+
+---
+
+### Additional Resources
+
+- [System Design Primer on GitHub](https://github.com/donnemartin/system-design-primer)
+- [Design a Web Crawler Solution](https://github.com/donnemartin/system-design-primer/blob/main/solutions/system_design/web_crawler/README.md)
+- [Design the Twitter Timeline and Search](https://github.com/donnemartin/system-design-primer/blob/main/solutions/system_design/twitter/README.md)
+- [System Design Interview Tips](https://www.palantir.com/2011/10/how-to-rock-a-systems-design-interview/)
+
+---
+
+This framework equips you to lead conversations confidently, demonstrate deep understanding, and build scalable, maintainable system designs during interviews.
