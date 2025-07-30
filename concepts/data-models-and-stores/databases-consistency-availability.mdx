@@ -3,4 +3,152 @@ title: "Databases, Consistency & Availability"
 description: "Examine the landscape of data stores—relational, document, key-value, wide-column, graph—and how they manage trade-offs between consistency, availability, and partition tolerance. Understand the CAP theorem and how it applies to real system choices."
 ---
 
-*This page will automatically be generated from the codebase*
+# Databases, Consistency & Availability
+
+Explore the landscape of data stores—relational, document, key-value, wide-column, graph—and how they manage trade-offs between consistency, availability, and partition tolerance. Understand the CAP theorem and how it applies to real system choices.
+
+---
+
+## Understanding Databases: Types and Trade-offs
+
+Databases are foundational to most large-scale systems. Choosing the right type depends on your application requirements, data structure, scalability needs, and consistency guarantees. Let’s explore key categories of databases and their characteristics.
+
+### 1. Relational Database Management Systems (RDBMS)
+
+RDBMS like MySQL, PostgreSQL, and Oracle store data in structured tables with defined schema. They support ACID transactions ensuring atomicity, consistency, isolation, and durability.
+
+#### Key Features
+- Structured and consistent data storage
+- Strong schema and support for complex joins
+- Support transactional guarantees (ACID)
+
+#### Scaling Strategies
+- **Master-slave replication:** Master handles writes and replicates to read-only slaves
+- **Master-master replication:** Multiple nodes accept read and write operations (careful with conflicts)
+- **Federation:** Break databases by function to reduce load and latency
+- **Sharding:** Partition database horizontally to distribute data across servers
+- **Denormalization:** Store redundant data to reduce costly joins, boosting read performance
+- **SQL Tuning:** Optimize queries and indices to improve performance
+
+#### Common Trade-offs
+- Strong consistency but harder to scale horizontally
+- Complex joins can lead to performance bottlenecks on large data
+- Replication lag may cause stale reads
+
+### 2. NoSQL Databases
+
+NoSQL databases relax some ACID properties to gain scalability and flexibility. They are broadly categorized as key-value, document, wide-column, and graph.
+
+#### Key-Value Stores
+- Simplest form, analogous to hash tables
+- Extremely fast O(1) reads/writes, typically in-memory or SSD backed
+- Minimal query capabilities; complexity shifts to application layer
+- E.g., Redis, Memcached
+
+#### Document Stores
+- Store data as documents (JSON, XML, BSON)
+- Allow querying based on document structure
+- Flexible schema; documents in collections can vary in fields
+- E.g., MongoDB, CouchDB, DynamoDB
+
+#### Wide-Column Stores
+- Data organized in column families, optimized for reads on large datasets
+- Provide high scalability and availability
+- E.g., Bigtable (Google), HBase, Cassandra
+
+#### Graph Databases
+- Store nodes and edges, optimized for complex relationships like social networks
+- Newer technology with smaller ecosystem
+- E.g., Neo4j, FlockDB
+
+#### Characteristics
+- BASE semantics: Basically Available, Soft state, Eventual consistency
+- Prioritize scalability and high availability over immediate consistency
+
+### 3. SQL vs NoSQL: When to Use Which?
+
+| Use Case                 | SQL (RDBMS)                     | NoSQL                            |
+|--------------------------|--------------------------------|---------------------------------|
+| Schema                   | Structured, fixed schema        | Flexible, dynamic schema        |
+| Relationships            | Complex join support            | Limited or no join              |
+| Scalability              | Vertical scaling or complex horizontal (sharding) | Horizontal scaling built-in     |
+| Consistency              | Strong consistency (ACID)       | Eventual consistency (BASE)     |
+| Data Size                | Generally smaller datasets      | Handling TB/PB scale data       |
+| Use-cases                | Financial, transactional systems, legacy | Big data, real time, rapidly changing data |
+
+---
+
+## The CAP Theorem: Consistency, Availability, Partition Tolerance
+
+In distributed systems, the CAP theorem states you can only guarantee two out of these three simultaneously:
+
+- **Consistency (C):** Every read sees the latest write
+- **Availability (A):** Every request receives a non-error response (not guaranteed latest)
+- **Partition tolerance (P):** System continues to operate despite network partitions
+
+Since network partitions are inevitable, systems must choose between:
+
+- **CP systems:** Favor consistency at the expense of availability during partitions (may have high latency/failures)
+- **AP systems:** Favor availability at the expense of consistency during partitions (provide eventual consistency)
+
+### Consistency Models in Practice
+
+| Pattern           | Description                                                    | Example Use Cases                |
+|-------------------|----------------------------------------------------------------|--------------------------------|
+| Weak consistency  | Reads after write may or may not see written data             | VoIP, games with tolerable lags |
+| Eventual consistency | Reads see the write eventually (milliseconds delay)           | DNS, email systems               |
+| Strong consistency | Reads always see latest write immediately                      | File systems, banking systems   |
+
+---
+
+## Availability Patterns
+
+High availability is pursued through redundancy:
+
+### Failover
+
+- **Active-passive:** Primary active node handles traffic; standby node takes over on failure
+- **Active-active:** Multiple nodes handle traffic simultaneously; load balanced
+
+Shortcomings:
+- Additional hardware required
+- Potential data loss if failing node hasn't replicated latest writes
+
+### Replication
+
+- Allows data duplication across multiple nodes
+- Supports read scalability and fault tolerance
+- Challenges include replication lag and consistency conflicts
+
+---
+
+## Key Takeaways for System Designers
+
+- Every database and storage choice reflects trade-offs between consistency, availability, scalability, and complexity.
+- RDBMS offer strong consistency but need sophisticated strategies to scale out.
+- NoSQL databases prioritize scalability and availability, accepting eventual consistency.
+- CAP theorem is a core decision framework: availability or consistency when network splits occur.
+- Choose consistency model and database type based on application domain needs and tolerance for stale or conflicting data.
+
+---
+
+## Helpful Links and Resources
+
+- [System Design Primer - Database section](https://github.com/donnemartin/system-design-primer#index-of-system-design-topics)
+- [CAP theorem revisited](http://robertgreiner.com/2014/08/cap-theorem-revisited/)
+- [Understanding NoSQL](https://www.youtube.com/watch?v=qI_g07C_Q5I)
+- [Bigtable paper](http://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf)
+- [Cassandra architecture](https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/architecture/architectureIntro_c.html)
+
+---
+
+## Troubleshooting Common Challenges
+
+- **Database bottlenecks:** Identify read-heavy vs write-heavy loads; consider replicas and caches.
+- **Replication lag:** Consider consistency needs; possible stale reads.
+- **Scaling writes:** Use sharding or denormalization.
+- **Choosing consistency:** Understand your usage pattern tolerance and criticality of data freshness.
+
+---
+
+By deeply understanding these concepts on databases and their consistency and availability trade-offs, users can make informed system design decisions optimized for their real-world use cases.
