@@ -1,0 +1,150 @@
+---
+title: "Security Principles & Threat Models"
+description: "Review the essential security practices for modern systems—including encryption, authentication, principle of least privilege, safeguarding against common attacks—and how security impacts architecture design."
+---
+
+# Security Principles & Threat Models
+
+Security is a critical foundation in modern system design that protects data integrity, confidentiality, and availability. This guide reviews essential security practices that every system designer must consider—ranging from encryption and authentication to the principle of least privilege, common attack vectors, and how security shapes architectural decisions.
+
+---
+
+## 1. Encryption: Safeguarding Data in Transit and at Rest
+
+### Why Encryption Matters
+Modern systems handle sensitive data vulnerable to interception or unauthorized access. Encryption ensures that data remains confidential and tamper-proof both during transmission over networks and while stored.
+
+### In Transit
+- Use protocols such as TLS (Transport Layer Security) to encrypt communication channels.
+- SSL termination can be offloaded to load balancers or reverse proxies to centralize encryption handling and reduce cryptographic load on backend servers.
+
+### At Rest
+- Encrypt databases, files, and backups using strong algorithms (AES-256 or better).
+- Employ key management practices to safely store and rotate encryption keys.
+
+<Tip>
+Encryption prevents attackers from reading sensitive data even if they access network traffic or storage media.
+</Tip>
+
+---
+
+## 2. Authentication & Authorization: Controlling Access
+
+### Authentication
+Authenticate users and services rigorously:
+- Employ multi-factor authentication (MFA) where possible.
+- Leverage proven identity services (OAuth, OpenID Connect) for federated access.
+
+### Authorization
+- Adopt the Principle of Least Privilege — grant only the minimum permissions required.
+- Design role-based access control (RBAC) or attribute-based access control (ABAC) models.
+- Regularly audit permission grants to prevent privilege creep.
+
+<Note>
+Avoid excessive permissions which increase attack surface.
+</Note>
+
+---
+
+## 3. Input Sanitization: Guarding Against Injection Attacks
+
+### SQL Injection
+- Use parameterized queries or prepared statements to prevent attackers from injecting malicious SQL.
+- Never concatenate user inputs directly into database queries.
+
+### Cross-Site Scripting (XSS)
+- Sanitize and encode all user inputs that appear in web pages.
+- Apply Content Security Policy (CSP) headers to restrict script execution.
+
+<Warning>
+Unvalidated inputs are the most common vector for attacks compromising data integrity and user security.
+</Warning>
+
+---
+
+## 4. Principle of Least Privilege
+
+Every component, user, or service should operate using the least privilege necessary to perform its function:
+- Prevents lateral movement of attackers after compromise.
+- Limits damage scope if credentials or components are hijacked.
+
+### Application
+- Limit database users to only needed tables and operations.
+- Apply minimal rights on system files and network permissions.
+
+### Infrastructure
+- Segregate environments (development, staging, production) with isolated credentials.
+- Use firewall policies to restrict network access tightly.
+
+---
+
+## 5. Protection Against Common Attacks
+
+### Distributed Denial of Service (DDoS)
+- Employ rate limiting, web application firewalls (WAFs), and CDNs to absorb attack traffic.
+- Design systems to degrade gracefully when overwhelmed.
+
+### Man-in-the-Middle (MITM)
+- Always use encrypted communication (TLS).
+- Validate certificates carefully.
+
+### Credential Attacks
+- Enforce password complexity and MFA.
+- Use secured storage and hashing (bcrypt, scrypt) for passwords.
+
+### Security Misconfiguration
+- Regularly review configurations.
+- Use automation to maintain secure defaults.
+
+---
+
+## 6. How Security Impacts Architecture Design
+
+Security is not an afterthought but a core architectural concern that influences:
+
+- **Layered security (Defense-in-Depth)**: Multiple complementary security controls throughout network, application, and data layers.
+- **Segmentation and isolation**: Divide the system into security zones to contain breaches.
+- **Auditing and logging**: Maintain comprehensive logs for monitoring, incident response, and compliance.
+- **Fail-safe defaults**: Systems should deny by default and allow only explicitly authorized access.
+
+<Tip>
+Designing with security embedded leads to lower risk and easier compliance with regulations.
+</Tip>
+
+---
+
+## 7. Practical Tips & Best Practices
+
+- Use third-party libraries and frameworks for security-critical tasks instead of custom implementations.
+- Regularly patch software and dependencies to mitigate known vulnerabilities.
+- Employ automated security testing tools to find issues early.
+- Educate and enforce security awareness among developers and operators.
+
+---
+
+## 8. Common Pitfalls & Troubleshooting
+
+| Issue                       | Cause                                     | Mitigation                                           |
+|----------------------------|-------------------------------------------|-----------------------------------------------------|
+| Stale data in cache leading to security holes | Improper cache invalidation | Implement proper TTLs and cache update strategies. |
+| Credential leakage | Overpermissioned roles, shared or hardcoded credentials | Enforce least privilege; use secrets vaults. |
+| Weak encryption or unencrypted channels | Misconfiguration of TLS/SSL | Use industry standards; employ certificate validation. |
+| Unexpected user input exploits | Lack of input validation/sanitization | Validate all inputs; use parameterized queries. |
+
+---
+
+## References & Further Reading
+
+- [Security guide for developers](https://github.com/FallibleInc/security-guide-for-developers)
+- [OWASP top ten](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet)
+- [Principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege)
+- [SQL Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)
+- [Cross-Site Scripting (XSS) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
+
+---
+
+## Summary
+
+Security in system design entails enforcing confidentiality, integrity, and availability through disciplined practices like encryption, rigorous authentication and authorization, sanitization of user inputs, and architectural decisions guided by the principle of least privilege. Understanding common attack vectors and embedding security as an architectural pillar leads to robust, resilient systems.
+
+---

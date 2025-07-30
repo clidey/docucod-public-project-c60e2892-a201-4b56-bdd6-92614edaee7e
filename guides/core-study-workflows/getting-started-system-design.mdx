@@ -1,0 +1,181 @@
+---
+title: "Getting Started with System Design"
+description: "A practical walkthrough for newcomers on how to approach system design study in this repository. Learn which topics are most important, how to navigate different content types, and how to tailor your learning process according to your timeline and interview goals."
+---
+
+# Getting Started with System Design
+
+A practical walkthrough for newcomers on how to approach system design study in this repository. Learn which topics are most important, how to navigate different content types, and how to tailor your learning process according to your timeline and interview goals.
+
+---
+
+## 1. Workflow Overview
+
+### Task Description
+This guide helps you begin your journey into system design with focused steps. It explains which core topics to study first, how to prioritize learning based on your timeline, and how to work efficiently through interview questions and sample solutions included in this repository.
+
+### Prerequisites
+- Basic understanding of software engineering concepts.
+- Familiarity with programming and design patterns.
+- Access to this repository’s materials.
+
+### Expected Outcome
+By following this guide, you will:
+- Know how to prioritize system design topics by importance and your interview timeline.
+- Understand how to approach system design interview questions thoughtfully.
+- Gain confidence in navigating the repository’s vast resources efficiently.
+
+### Time Estimate
+Varies depending on your engagement level:
+- Short timeline: 1–2 weeks
+- Medium timeline: 1–3 months
+- Long timeline: 3+ months
+
+### Difficulty Level
+Beginner to Intermediate
+
+---
+
+## 2. How to Approach Your System Design Study
+
+### Step 1: Understand Your Interview Timeline and Goals
+Before you begin, assess how much time you have and your experience level. Align your focus according to these three categories:
+
+| Timeline       | Focus                         | Practice                             |
+|----------------|-------------------------------|------------------------------------|
+| Short timeline | Breadth of topics             | Solve some interview questions      |
+| Medium timeline| Breadth and some depth        | Solve many interview questions      |
+| Long timeline  | Breadth and more depth        | Solve most interview questions      |
+
+Remember, you don’t have to master everything; interview expectations vary based on companies and roles.
+
+### Step 2: Start with Key System Design Topics
+Explore the [index of system design topics](#index-of-system-design-topics) to understand fundamental concepts such as scalability, caching, load balancing, and databases.
+
+**Suggested starting steps:**
+- Watch the [scalability video lecture](https://www.youtube.com/watch?v=-W9F__D3oY4).
+- Read the accompanying [scalability article](https://web.archive.org/web/20221030091841/http://www.lecloud.net/tagged/scalability/chrono).
+
+### Step 3: Learn the High-Level Trade-Offs
+Understand the critical trade-offs that form the foundation of system design:
+- Performance vs scalability
+- Latency vs throughput
+- Availability vs consistency
+
+These are essential to appreciate because every design choice involves trade-offs.
+
+### Step 4: Explore Study Materials and Practice
+Begin working through system design interview questions with solutions provided in the `solutions/` folder such as:
+- Designing Pastebin or Bit.ly
+- Designing the Twitter timeline and search
+- Designing a web crawler
+
+Try to actively compare your approaches with sample solutions including code and diagrams.
+
+### Step 5: Use Anki Flashcards
+Leverage [Anki flashcards](https://apps.ankiweb.net/) included in this repo for spaced repetition and retention of complex system design concepts.
+
+Recommended decks:
+- System Design
+- System Design Exercises
+- Object-Oriented Design Exercises
+
+### Step 6: Iterate and Deepen Study
+Applied consistent learning and practice, gradually increasing complexity and depth. Use the [how to approach system design interview questions](#how-to-approach-a-system-design-interview-question) section to master handling the open-ended system design interview conversations.
+
+---
+
+## 3. Step-by-Step Guidance for Tackling System Design Interview Questions
+
+### Step 1: Define Use Cases, Constraints, and Assumptions
+Begin your interview discussion by clarifying requirements.
+Ask and state:
+- Who will use the system and how?
+- Expected user count.
+- What inputs and outputs exist?
+- Data volume anticipated.
+- Read to write ratio.
+
+Document assumptions explicitly.
+
+### Step 2: Create a High-Level Design
+Sketch the architecture outlining main components and their interactions.
+Explain why each component exists and how it fits.
+
+### Step 3: Design Core Components
+Dive into important parts such as databases, APIs, and data models.
+Give concrete examples, e.g., how a URL shortening service might generate and store hashes.
+
+### Step 4: Address Scalability and Bottlenecks
+Identify potential bottlenecks with your initial design.
+Consider adding:
+- Load balancers
+- Horizontal scaling
+- Caching layers
+- Database sharding
+
+Discuss the trade-offs involved.
+
+### Bonus Tip: Use Back-of-the-Envelope Calculations
+If asked, perform quick estimates on:
+- Traffic volumes
+- Storage needed
+- Request rates
+
+Use the [Appendix](#appendix) for latency numbers and powers-of-two references.
+
+---
+
+## 4. Examples of Interview Questions with Solutions
+
+Access a curated list of questions with detailed answers in the repository's `solutions/` folder:
+- [Pastebin.com or Bit.ly](solutions/system_design/pastebin/README.md)
+- [Twitter Timeline and Search](solutions/system_design/twitter/README.md)
+- [Web Crawler](solutions/system_design/web_crawler/README.md)
+- [Mint.com](solutions/system_design/mint/README.md)
+
+Work through the questions to understand how to design and explain large-scale systems.
+
+---
+
+## 5. Tips and Best Practices
+
+- **Don’t rush to the final design:** Demonstrate iterative thinking — benchmark, profile, address bottlenecks, then refine.
+- **Use practical trade-offs:** Discuss pros and cons transparently.
+- **Start broad, then focus:** Gain a broad overview first before deep-diving into specific topics.
+
+---
+
+## 6. Troubleshooting Common Challenges
+
+- Feeling overwhelmed by the breadth? Focus on core concepts first.
+- Unsure what topics interviewers prioritize? Refer to the suggested study timelines.
+- Difficulty with open-ended questions? Practice thought structuring using the stepwise approach in this guide.
+
+---
+
+## 7. Next Steps
+
+After completing this introductory workflow, explore:
+- [Creating your interview prep plan](/guides/core-study-workflows/creating-your-interview-prep-plan)
+- [Using Anki Flashcards Effectively](/guides/core-study-workflows/using-anki-flashcards-effectively)
+- Dive into [Best Practices & Real-World Patterns](/guides/best-practices-real-world/system-design-best-practices)
+- Review company-specific [Engineering Blogs](/overview/architecture_concepts/using-reference-architectures)
+
+---
+
+## Quick Navigation Links
+- [Index of system design topics](#index-of-system-design-topics)
+- [How to approach a system design interview question](#how-to-approach-a-system-design-interview-question)
+- [System design interview questions with solutions](#system-design-interview-questions-with-solutions)
+- [Anki flashcard decks](https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards)
+
+---
+
+## Appendix
+
+Keep handy references like [Latency numbers every programmer should know](#latency-numbers-every-programmer-should-know) and [Powers of two table](#powers-of-two-table) for quick on-the-fly calculations.
+
+---
+
+*This guide is built upon the content and structure you can find in the System Design Primer repository's main README and solution pages.*

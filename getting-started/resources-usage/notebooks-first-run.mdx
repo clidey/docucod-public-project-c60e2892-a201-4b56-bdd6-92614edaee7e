@@ -1,0 +1,215 @@
+---
+title: "Working with Notebooks & Code Solutions"
+description: "Guides users through opening and exploring sample solutions for system and object-oriented design problems—primarily Jupyter/IPython notebooks. Includes how to install Jupyter, open notebooks, and interact with code and diagrams for active learning."
+---
+
+# Working with Notebooks & Code Solutions
+
+Get ready to dive into hands-on learning by exploring sample solutions implemented primarily as Jupyter (IPython) notebooks. This guide will take you through installing Jupyter, launching notebooks, and interacting actively with code examples and design problems, empowering you to learn by doing.
+
+---
+
+## 1. Prerequisites & System Requirements
+
+Before opening notebooks for system and object-oriented design problems, ensure your environment is ready:
+
+- **Python Installation**: Python 3.x must be installed.
+- **Jupyter Notebook**: The interactive environment for running and editing notebooks.
+- **Basic Familiarity**: Some comfort with using the command line and Python will help.
+- **Internet Access**: To download packages and access external resources.
+
+
+## 2. Installing Jupyter Notebook
+
+Follow these steps to install Jupyter and related dependencies to run notebooks smoothly.
+
+### Step 1: Install Python 3
+
+- Download the latest Python 3.x version from the [official Python site](https://www.python.org/downloads/).
+- Follow the installer instructions for your OS (Windows, macOS, Linux).
+- Verify installation by running:
+  ```bash
+  python --version
+  ```
+  You should see Python 3.x.x
+
+### Step 2: Install Jupyter via pip
+
+Open your terminal or command prompt and run:
+
+```bash
+pip install jupyter
+```
+
+This command installs the core Jupyter notebook environment.
+
+### Step 3: Install Additional Dependencies (if needed)
+
+Some notebooks depend on modules like `enum` or Python utilities. Most dependencies are standard in Python 3, but if you encounter errors running the notebooks, you may need to install additional packages using pip, e.g.:
+
+```bash
+pip install ipython
+```
+
+
+## 3. Opening and Exploring Notebooks
+
+Once Jupyter is installed, you’re ready to open your first notebook.
+
+### Step 1: Navigate to the Notebooks Directory
+
+Open your terminal and change directory to where the sample notebooks reside, for example:
+
+```bash
+cd /path/to/solutions
+```
+
+### Step 2: Launch Jupyter Notebook
+
+Run the following command:
+
+```bash
+jupyter notebook
+```
+
+This opens a browser window or tab showing the Jupyter interface with your directory files listed.
+
+### Step 3: Open a Notebook
+
+Click any notebook file (`.ipynb` extension) such as:
+
+- `solutions/object_oriented_design/hash_table/hash_map.ipynb`
+- `solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb`
+
+The notebook interface allows you to view, edit, and run code cells interactively. Markdown cells provide explanation and context.
+
+### Step 4: Interact with Code Cells
+
+- Use the toolbar buttons or keyboard shortcuts (`Shift + Enter`) to run individual cells.
+- Modify code in editable cells for experimentation.
+- Observe outputs and returned values below cells.
+
+
+## 4. Active Learning Workflow
+
+Using notebooks enhances understanding by allowing you to engage directly with problem-solving code.
+
+### Example: Exploring a Hash Map Design Notebook
+
+The `hash_map.ipynb` covers the design and implementation of a hash map supporting integer keys and chaining for collisions.
+
+Try these steps:
+
+1. Read markdown cells to understand constraints and problem description.
+2. Run the code cell defining the `HashTable` and `Item` classes.
+3. Experiment by adding cells below to create a hash table instance and insert, retrieve, or remove keys.
+
+```python
+ht = HashTable(10)
+ht.set(1, 'apple')
+print(ht.get(1))  # Output: apple
+ht.remove(1)
+```
+
+
+## 5. Working with Diagrams and Visuals
+
+Some notebooks also present diagrams alongside code to visualize designs, such as class relations or data structures. These enhance conceptual understanding by linking code to its object-oriented design.
+
+Interact by:
+
+- Following diagram explanations in markdown.
+- Mapping code elements to diagram components.
+- Editing or extending code based on design patterns.
+
+
+## 6. Troubleshooting Common Issues
+
+- **Jupyter Not Launching**: Check Python and pip paths, confirm installation.
+- **Missing Modules**: Install required packages via pip referenced in notebook errors.
+- **Code Errors**: Verify you ran preceding cells, and that inputs follow expected formats.
+- **Notebook Doesn’t Save**: Make sure you have write permissions in the folder.
+
+<AccordionGroup title="Common Problems & Solutions">
+<Accordion title="Installation Issues">
+Make sure Python3 and pip are installed and on your system PATH. Use `python3` and `pip3` commands if needed.
+</Accordion>
+<Accordion title="Kernel Errors in Notebooks">
+Restart the kernel (Kernel > Restart) and re-run cells from the start. Check for dependency errors.
+</Accordion>
+<Accordion title="Code Cell Execution Problems">
+Cells run in order; if variables aren’t defined, re-run earlier code cells. Avoid skipping ahead.
+</Accordion>
+</AccordionGroup>
+
+
+## 7. Best Practices & Tips
+
+- Save regularly to avoid losing progress.
+- Use Jupyter shortcuts to speed up navigation:
+  - `Shift + Enter` to run cell and move forward.
+  - `Esc + B` to create a new cell below.
+- Experiment by tweaking code to see real-time effects.
+- Refer to Markdown for explanations; add your own comments.
+
+
+## 8. Next Steps & Additional Resources
+
+After familiarizing yourself with notebooks:
+
+- Explore other problem domains such as the `deck_of_cards.ipynb` for object-oriented design practice.
+- Use the Primer’s flashcards and visual guides to reinforce learning.
+- Visit [The System Design Primer GitHub](https://github.com/donnemartin/system-design-primer) for latest updates and community contributions.
+
+---
+
+Weave interactive code exploration with conceptual learning by engaging deeply with notebooks, accelerating your mastery of system and object-oriented design.
+
+---
+
+### Sample Jupyter Notebook Cell: Hash Map Design (for illustration)
+
+```python
+class Item(object):
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+
+class HashTable(object):
+    def __init__(self, size):
+        self.size = size
+        self.table = [[] for _ in range(self.size)]
+
+    def _hash_function(self, key):
+        return key % self.size
+
+    def set(self, key, value):
+        hash_index = self._hash_function(key)
+        for item in self.table[hash_index]:
+            if item.key == key:
+                item.value = value
+                return
+        self.table[hash_index].append(Item(key, value))
+
+    def get(self, key):
+        hash_index = self._hash_function(key)
+        for item in self.table[hash_index]:
+            if item.key == key:
+                return item.value
+        raise KeyError('Key not found')
+
+    def remove(self, key):
+        hash_index = self._hash_function(key)
+        for index, item in enumerate(self.table[hash_index]):
+            if item.key == key:
+                del self.table[hash_index][index]
+                return
+        raise KeyError('Key not found')
+```
+
+Try instantiating and testing this class live in your notebook!
+
+
+---
+
+For further support, visit the Getting Started section or check out related guides on system design workflows and interview question strategies in this product's documentation.

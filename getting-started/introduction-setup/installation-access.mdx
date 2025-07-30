@@ -1,0 +1,155 @@
+---
+title: "Installation & Accessing Materials"
+description: "Step-by-step instructions for downloading, cloning, or otherwise acquiring the repository contents on various platforms. Guides users through initial directory structure and where to locate key study assets (notebooks, Anki decks, guides, diagrams)."
+---
+
+# Installation & Accessing Materials
+
+Welcome to the initial setup guide for the System Design Primer repository. This page will help you **download or clone** the repository content across various platforms and get acquainted with the **directory structure** and location of key study assets including notebooks, Anki flashcard decks, written guides, and diagrams.
+
+---
+
+## 1. Acquiring the Repository
+
+### Choose Your Method:
+
+- **Clone with Git (Recommended)**
+  - If you have Git installed, cloning the repo preserves history and enables easy updates.
+  - Run the following command in your terminal or command prompt:
+
+```bash
+git clone https://github.com/donnemartin/system-design-primer.git
+```
+
+- **Download ZIP**
+  - If Git is not installed, use GitHub’s "Download ZIP" button on the repository page.
+  - Extract the contents to your desired folder.
+
+- **Direct Access**
+  - The repository is publicly available: [https://github.com/donnemartin/system-design-primer](https://github.com/donnemartin/system-design-primer)
+  - You can browse files directly on GitHub or download individual assets.
+
+### Platform Notes
+
+- **Windows Users**: Use Git Bash or install Git for Windows for the best Git experience.
+- **macOS/Linux Users**: Use the terminal’s native Git installation.
+- **Permissions**: Ensure you have read access to the repository and sufficient disk space.
+
+<Tip>
+If you plan on contributing or keeping the repository up to date, cloning via Git is superior to downloading ZIP archives.
+</Tip>
+
+---
+
+## 2. Repository Directory Structure Overview
+
+After you acquire the repository, it’s important to understand the key folders and where to find study materials.
+
+```
+system-design-primer/
+├── resources/
+│   ├── flash_cards/
+│   │   ├── System Design.apkg              # Anki flashcard deck for system design concepts
+│   │   ├── System Design Exercises.apkg   # Anki flashcard deck with exercises and practice questions
+│   │   ├── OO Design.apkg                   # Anki deck focused on object-oriented design
+│   ├── ...                                # Other resource files such as diagrams
+├── solutions/
+│   ├── system_design/
+│   │   ├── scaling_aws/                    # Study guides for system scalability on AWS
+│   │   ├── mint/                          # Case study: Mint.com design examples
+│   │   ├── twitter/                       # Twitter timeline and search
+│   │   ├── web_crawler/                   # Web crawler system design
+│   ├── object_oriented_design/            # Solutions and code examples for OOD problems
+├── guides/
+│   ├── ...                               # Written guides and workflow descriptions
+├── README.md                             # Main introductory document
+```
+
+### Key Study Assets:
+
+- **Anki Decks (.apkg files)** in `resources/flash_cards/`
+  - Designed for spaced repetition learning
+  - Can be imported into Anki app available on desktop or mobile
+
+- **Notebooks & Code Solutions**
+  - Located within `solutions/` subdirectories
+  - Example notebooks provide interactive code for learning core concepts
+
+- **Visual Guides & Diagrams**
+  - Available under various folders in `resources/`
+  - Useful for grasping architectural patterns and workflows
+
+<Note>
+Anki decks are useful for active recall. Make sure you have the latest Anki Desktop or mobile app before importing.
+</Note>
+
+---
+
+## 3. Using the Anki Flashcard Decks
+
+Follow these steps to utilize the flashcard decks effectively:
+
+1. Download the `.apkg` files from `resources/flash_cards/`.
+2. Open Anki application.
+3. Select **File > Import** and choose the downloaded `.apkg` file.
+4. Study the flashcards regularly using Anki’s spaced repetition algorithms.
+
+<Tip>
+The decks cover core system design principles, exercises for practice, and object-oriented design concepts tailored to interviews.
+</Tip>
+
+---
+
+## 4. Navigating the Notebooks and Solutions
+
+The repository includes Jupyter Notebooks (`*.ipynb` files) and other scripts to practice system design problems interactively.
+
+- Found in `solutions/` directory
+- Open notebooks using Jupyter:
+
+```bash
+# From repo root, activate environment with Jupyter installed
+jupyter notebook
+```
+
+- Follow the notebook instructions to explore code examples step by step.
+
+---
+
+## 5. Troubleshooting Common Issues
+
+- **Git Clone Fails:** Check for network restrictions or firewall blocks.
+- **Importing Anki Deck Fails:** Update Anki to the latest version and verify file integrity.
+- **Jupyter Notebooks Not Opening:** Ensure Python and Jupyter are installed correctly.
+- **Missing File in Directory:** Confirm the repo is fully cloned or downloaded.
+
+For further assistance, consult the [Troubleshooting Guide](/getting-started/validation-support/troubleshooting-common-issues).
+
+---
+
+## 6. Next Steps
+
+- Once you have the materials downloaded, begin with the [Getting Started with System Design](/guides/core-study-workflows/getting-started-system-design) page.
+- Use the flashcards alongside hands-on practice with the [Interview Practice Questions](/overview/feature_workflows/interview_practice_features).
+- Explore the [Using Anki Flashcards Effectively](/guides/core-study-workflows/using-anki-flashcards-effectively) guide for study tips.
+
+<Check>
+Remember to keep your repository up to date using:
+
+```bash
+git pull origin main
+```
+
+</Check>
+
+---
+
+## Summary
+
+You have now downloaded or cloned the System Design Primer repository and identified where to find key learning resources such as flashcards, notebooks, and guides. This foundation will enable an effective study workflow.
+
+---
+
+*For deep dive into system design core principles and interview preparation, see the [Overview](https://github.com/donnemartin/system-design-primer/tree/main/overview), [Guides](https://github.com/donnemartin/system-design-primer/tree/main/guides), and [Solutions](https://github.com/donnemartin/system-design-primer/tree/main/solutions) folders.*
+
+---

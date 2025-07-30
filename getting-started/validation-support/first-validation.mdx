@@ -1,0 +1,158 @@
+---
+title: "Validating Your Setup"
+description: "Guides users through simple steps to verify correct installation of key tools (Jupyter, Anki, etc.) and test opening core resources. Provides checklists for ensuring access to notebooks, flashcards, and diagrams is working as expected."
+---
+
+# Validating Your Setup
+
+This guide will walk you through the essential steps to confirm that your key tools like Jupyter, Anki, and other core resources are correctly installed and accessible. By following the checklists and tests here, you'll ensure you have seamless access to study materials including notebooks, flashcards, and diagrams.
+
+---
+
+## 1. Verify Installation of Key Tools
+
+### 1.1 Verify Jupyter Notebook Installation
+Jupyter notebooks are central for working interactively with the provided exercises and code solutions.
+
+**Steps:**
+
+1. Open your terminal (Command Prompt, PowerShell, or Terminal).
+2. Run the following command to check Jupyter is installed and accessible:
+
+```bash
+jupyter notebook --version
+```
+
+- **Expected result:** The version number of Jupyter Notebook is printed.
+- **Troubleshooting:** If you get an error saying `command not found` or similar, ensure Python and Jupyter are installed and added to your system PATH.
+
+3. Start Jupyter Notebook with:
+
+```bash
+jupyter notebook
+```
+
+- This should open the Jupyter dashboard in your default browser.
+- **Successful check:** You see the file list and directories related to the system design primer project.
+
+4. Open a sample notebook, for example, an exercise notebook in the `solutions` directory.
+
+- Ensure the notebook opens without errors.
+- You can run a few test cells to validate the kernel is working correctly.
+
+
+<Check>
+If you cannot open notebooks or the kernel doesn't start, verify Python environment setup, and that dependencies are installed as described in the 'Prerequisites & System Requirements' section.
+</Check>
+
+---
+
+### 1.2 Verify Anki Flashcards
+Anki decks use spaced repetition to help you learn and memorize system design concepts effectively.
+
+**Steps:**
+
+1. Open the Anki application on your computer or mobile device.
+2. Import one of the provided Anki `.apkg` files from the `resources/flash_cards` folder.
+
+- For example: `System Design.apkg` or `System Design Exercises.apkg`.
+
+3. Once imported, browse a few flashcards to confirm they display properly.
+4. Check that card images and formatting appear correctly.
+
+<Check>
+If importing fails or cards look broken:
+- Ensure you have the latest version of Anki installed.
+- Confirm `.apkg` files aren't corrupted.
+- Refer to Anki's official troubleshooting documentation.
+</Check>
+
+---
+
+### 1.3 Verify Access to Visual Guides and Diagrams
+Visual guides and Mermaid.js diagrams enhance understanding of complex system design topics.
+
+**Steps:**
+
+1. Navigate to the `getting-started/resources-usage/visual-guides` folder.
+2. Open sample diagrams in a supported Markdown viewer, browser, or editor that supports Mermaid.js.
+
+- You can also try opening any `.svg` or `.png` images that accompany the guides.
+
+3. Validate diagrams render fully with no broken elements.
+
+---
+
+## 2. Access Checks for Core Materials
+
+### 2.1 Notebooks
+- Confirm the ability to locate and open the required Jupyter notebooks relevant to your study path.
+- Check notebooks under the `solutions` directory or any featured example notebooks.
+
+### 2.2 Flashcards
+- Verify that the Anki decks you imported are synchronized if you use multiple devices.
+- Open a deck, review a sample flashcard, and try marking one as correct or incorrect to check syncing works.
+
+### 2.3 Diagrams
+- Interactive diagrams or visual study guides (e.g., Mermaid.js-based) should open in your browser or Markdown viewer.
+- If using browser plugins/extensions for Mermaid.js, ensure they are enabled and updated.
+
+---
+
+## 3. Troubleshooting Tips
+
+### Common Issues
+
+- **Jupyter does not start or kernel fails:**
+  - Verify Python version and Jupyter installation.
+  - Check if virtual environments are activated correctly.
+  - Review installation instructions in [Installation & Accessing Materials](../introduction-setup/installation-access).
+
+- **Anki deck import problems:**
+  - Ensure you have compatible Anki version.
+  - Redownload the .apkg files if corrupted.
+  - Check Anki forums for platform-specific issues.
+
+- **Diagrams not rendering:**
+  - Confirm Mermaid.js support in your environment.
+  - Use recommended Markdown editors such as VSCode with Mermaid preview extensions.
+
+---
+
+## 4. Validation Checklist Summary
+
+Use the checklist below to verify your setup is complete:
+
+| Step                                   | Status (✓/✗)               | Notes                              |
+|----------------------------------------|---------------------------|-----------------------------------|
+| Jupyter notebook version accessible    |                           | Run `jupyter notebook --version`  |
+| Able to launch Jupyter dashboard       |                           | Run `jupyter notebook`             |
+| Able to open and run sample notebooks  |                           |                                   |
+| Anki application installed             |                           |                                   |
+| Anki decks successfully imported       |                           | `.apkg` files from resources folder|
+| Able to view and interact with cards   |                           | Review and mark cards              |
+| Visual guides and Mermaid diagrams open|                           | Using Mermaid compatible tools     |
+
+---
+
+## 5. Next Steps
+
+Once your setup is validated and these tools are accessible, consider the following:
+
+- Begin exploring notebooks and running sample code from the `getting-started/resources-usage/notebooks-first-run` page.
+- Start reviewing Anki flashcards to reinforce foundational knowledge on the `getting-started/resources-usage/anki-flashcards` page.
+- Deepen your understanding with visual diagrams on the `getting-started/resources-usage/visual-guides` page.
+- Consult the [Troubleshooting Common Issues](../validation-support/troubleshooting-common-issues) page if you encounter problems.
+
+---
+
+## Additional Resources
+
+- [Prerequisites & System Requirements](../introduction-setup/prerequisites-requirements)
+- [Installation & Accessing Materials](../introduction-setup/installation-access)
+- [Using Anki Flashcards Effectively](../../guides/core-study-workflows/using-anki-flashcards-effectively)
+- [System Design Topics Index](../../overview/architecture_concepts/core_terms_and_patterns)
+
+---
+
+Maintaining this validation process ensures you gain uninterrupted access to all core learning materials, empowering your journey through system design mastery.

@@ -1,0 +1,187 @@
+---
+title: "Core System Design Concepts"
+description: "Gain a grounding in the basic terminology and thinking models in system design, including definitions of scalability, performance, availability, and consistency. This page introduces key trade-offs every engineer faces and frames how to approach architectural decisions."
+---
+
+# Core System Design Concepts
+
+Gain a grounding in the basic terminology and thinking models in system design, including definitions of scalability, performance, availability, and consistency. This page introduces key trade-offs every engineer faces and frames how to approach architectural decisions.
+
+---
+
+## Introduction to System Design Thinking
+
+System design is fundamentally a trade-off exercise, involving choices among competing priorities: performance, scalability, availability, consistency, and cost. Understanding these key concepts helps engineers frame architectural decisions that balance these attributes to fit specific application requirements.
+
+This guide lays the foundation to think systematically about system design aspects crucial for building robust, scalable distributed applications.
+
+---
+
+## Fundamental Terms
+
+### Scalability
+
+**Scalability** describes a system's ability to handle growing amounts of work by adding resources proportionally. It enables a system to serve more users or process larger data volumes without dropping performance.
+
+- *Vertical scaling* involves boosting resources (CPU, RAM, disk) on a single machine.
+- *Horizontal scaling* involves adding more machines to work in parallel.
+
+### Performance
+
+**Performance** focuses on the speed of operations, including response time and throughput:
+
+- *Latency* is the time it takes to complete an operation.
+- *Throughput* is the number of operations per unit of time.
+
+Optimizing for performance involves minimizing latency while maximizing throughput.
+
+### Availability
+
+**Availability** is the probability that a system is operational and accessible when needed.
+
+Measured in terms of uptime expressed as “nines” (e.g., 99.9% or “three nines” means system downtime of less than 9 hours per year).
+
+### Consistency
+
+**Consistency** indicates how similar returned data is for all users or components that access the system at the same time:
+
+- *Strong consistency* means every read returns the latest written value.
+- *Eventual consistency* means that, given no new writes, all replicas eventually converge to the same value.
+
+### Fault Tolerance
+
+Ability of a system to continue operating properly in the event of the failure of some of its components.
+
+---
+
+## High-Level Trade-offs in System Design
+
+Every system design decision requires trade-offs. Key trade-offs include:
+
+### Performance vs. Scalability
+
+- **Performance** focuses on fast operations for current load.
+- **Scalability** emphasizes the system’s growth handling capability.
+
+You can have great performance but poor scalability (system slows with load) or good scalability but mediocre individual operation performance.
+
+### Latency vs. Throughput
+
+- Systems must balance **latency** (response time) with **throughput** (total processed requests).
+- In many cases, there is a trade-off between low latency and high throughput.
+
+### Availability vs. Consistency (CAP Theorem)
+
+- In distributed systems, based on the [CAP theorem](#cap-theorem), you can only have two of three guarantees: Consistency, Availability, and Partition Tolerance.
+- Partition tolerance is mandatory in distributed systems.
+- Systems often choose either CP (Consistency + Partition tolerance) or AP (Availability + Partition tolerance), depending on your use case.
+
+---
+
+## Core Concepts Explained
+
+### 1. Scalability
+
+A scalable system's performance improves proportionally with additional resources. Scaling approaches:
+
+- *Vertical scaling* (scale up): Upgrade a single machine.
+- *Horizontal scaling* (scale out): Add more machines. This is preferred for large-scale systems for cost and reliability.
+
+### 2. Performance Metrics
+
+- Latency: Total time to complete a request (e.g., 100ms per API call).
+- Throughput: Number of requests processed per second (e.g., 1000 QPS).
+
+Optimizing performance requires reducing average latency for the acceptable workload, and maximizing throughput without saturating resources.
+
+### 3. Availability
+
+Availability measures the fraction of time a system is operational.
+
+Typical SLA targets:
+
+| Availability | Downtime/year   |
+|--------------|-----------------|
+| 99.9%        | ~8.7 hours      |
+| 99.99%       | ~52.6 minutes   |
+| 99.999%      | ~5.3 minutes    |
+
+### 4. Consistency Models
+
+- **Strong consistency**: All users see the latest data immediately.
+- **Eventual consistency**: Updates propagate asynchronously.
+- **Weak consistency**: Reads may not reflect recent writes.
+
+Design for consistency depends on what the application tolerates.
+
+---
+
+## CAP Theorem: Understanding Trade-offs
+
+In a distributed system, [CAP theorem](http://robertgreiner.com/2014/08/cap-theorem-revisited) hypothesizes only two of the following three can be guaranteed simultaneously:
+
+- **Consistency (C):** All nodes see the same data at the same time.
+- **Availability (A):** Every request receives a (non-error) response.
+- **Partition Tolerance (P):** System continues to operate despite network partitions.
+
+Since network failures are unavoidable, modern systems must choose between **Consistency** and **Availability**.
+
+- **CP systems** favor consistency over availability.
+- **AP systems** favor availability over consistency.
+
+Knowing your business requirements helps pick the right side of the trade-off.
+
+---
+
+## Designing for Scalability and Availability
+
+### Scaling Approaches
+
+- **Horizontal scaling**: Add more servers. Requires stateless services or externalizing state (e.g., sessions stored in a cache).
+- **Load balancing**: Distribute traffic evenly.
+- **Caching**: Reduce load on backend systems, speed up response times.
+
+### Fault-tolerant Design
+
+- Redundancy: Multiple instances for high availability.
+- Failover mechanisms: Active-passive or active-active setups.
+- Partition tolerance: Design system to handle network partitions gracefully.
+
+### Consistency Patterns
+
+- Choose between consistency levels: strong, eventual, or per-use case.
+- Understand impact on system complexity and user experience.
+
+---
+
+## Practical Tips for System Design Decisions
+
+- Start simple: Build a minimum viable architecture.
+- Profile and benchmark: Identify real bottlenecks.
+- Understand traffic patterns: Read-heavy or write-heavy?
+- Use caches wisely to handle uneven load distributions.
+- Design asynchronous processing for heavy workloads where possible.
+- Plan for gradual migration and refactoring when scaling existing systems.
+
+---
+
+## Resources to Explore Next
+
+To master core system design concepts, explore these linked topics and layouts in the documentation:
+
+- [Scalability & Performance Models](https://primer.guide/concepts/architecture-foundations/scalability-and-performance)
+- [Architectural Patterns & Trade-offs](https://primer.guide/concepts/architecture-foundations/architecture-patterns)
+- [Databases, Consistency & Availability](https://primer.guide/concepts/data-models-and-stores/databases-consistency-availability)
+- [Caching Strategies & Patterns](https://primer.guide/concepts/data-models-and-stores/caching-strategies)
+- [Availability & Fault Tolerance](https://primer.guide/concepts/security-and-reliability/availability-and-fault-tolerance)
+- [Message Queues & Asynchronous Communication](https://primer.guide/concepts/integration-and-communication/api-communication)
+
+---
+
+## Summary
+
+Understanding the core system design concepts equips you to analyze and build systems that handle growth, unpredictable load, and fault tolerance. Trade-offs between scalability, performance, consistency, and availability form the basis of architectural decision-making.
+
+Starting with these fundamentals enables confident navigation of more advanced topics such as database scaling, caching, distributed systems patterns, and communication protocols.
+
+---
