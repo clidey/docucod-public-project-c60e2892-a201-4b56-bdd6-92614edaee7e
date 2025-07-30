@@ -3,4 +3,155 @@ title: "Troubleshooting Common Issues"
 description: "Lists frequent problems (e.g., opening notebooks, Anki import errors, missing software), with practical solutions and external links for further help. Encourages users to access community support and contributes to a smoother onboarding experience."
 ---
 
-*This page will automatically be generated from the codebase*
+# Troubleshooting Common Issues
+
+This page helps you quickly identify and resolve frequent problems encountered while using The System Design Primer. Whether you're having trouble opening notebooks, importing Anki flashcards, or missing required software, this guide provides practical solutions and pointers to helpful resources. Engaging with the community for support is also encouraged to smooth your onboarding experience.
+
+---
+
+## Common Problems and Solutions
+
+### 1. Issues Opening Jupyter Notebooks
+
+**Problem:** Unable to open or run the Jupyter notebooks included in the repository.
+
+**Solution:**
+- Ensure you have installed [Jupyter Notebook](https://jupyter.org/install) or [JupyterLab](https://jupyter.org/install).
+- Confirm your Python environment meets the package dependencies.
+- Open notebooks via the command line using:
+
+```bash
+jupyter notebook path/to/notebook.ipynb
+```
+
+or launch the entire notebook server from the repo folder:
+
+```bash
+jupyter notebook
+```
+
+- If you see errors related to package imports, install the required packages listed in the `requirements.txt` file:
+
+```bash
+pip install -r requirements.txt
+```
+
+- For help, visit the [Jupyter official troubleshooting guide](https://jupyter-notebook.readthedocs.io/en/stable/troubleshooting.html).
+
+<Note>
+Inconsistent or outdated Jupyter versions can cause notebooks to malfunction. Keeping Jupyter and related Python packages updated is good practice.
+</Note>
+
+---
+
+### 2. Anki Flashcard Import Errors
+
+**Problem:** The Anki flashcard decks fail to import or sync correctly.
+
+**Solution:**
+- Make sure you have the latest version of the [Anki](https://apps.ankiweb.net/) desktop application installed.
+- Download the correct `.apkg` files from the resources folder:
+
+  - `[System Design Deck](https://github.com/donnemartin/system-design-primer/tree/main/resources/flash_cards/System%20Design.apkg)`
+  - `[System Design Exercises Deck](https://github.com/donnemartin/system-design-primer/tree/main/resources/flash_cards/System%20Design%20Exercises.apkg)`
+  - `[Object Oriented Design Deck](https://github.com/donnemartin/system-design-primer/tree/main/resources/flash_cards/OO%20Design.apkg)`
+
+- In Anki, use _File > Import_ and select the `.apkg` file.
+- If decks are large or fail, try importing one deck at a time.
+- Refer to the [Anki import troubleshooting guide](https://github.com/donnemartin/system-design-primer/issues/251) for known issues.
+
+<Tip>
+Regularly backing up your Anki collection before importing new decks is strongly recommended.
+</Tip>
+
+---
+
+### 3. Missing Software or Dependencies
+
+**Problem:** Required software or dependencies for running the notebooks or other resources are missing.
+
+**Solution:**
+- Install Python 3.7 or later from [python.org](https://www.python.org/downloads/).
+- Install Jupyter and packages via:
+
+```bash
+pip install jupyter
+pip install -r requirements.txt
+```
+
+- For Mac users, tools like Homebrew can facilitate installation:
+
+```bash
+brew install python3
+pip3 install jupyter
+```
+
+- For Windows users, consider using the [Anaconda distribution](https://www.anaconda.com/products/individual), which comes prepackaged with Python, Jupyter, and many common data science libraries.
+
+- Refer to the [Prerequisites & System Requirements page](https://github.com/donnemartin/system-design-primer/blob/main/getting-started/introduction-setup/prerequisites-requirements.md) for detailed setup instructions.
+
+<Warning>
+Running notebooks or scripts with incompatible Python versions or missing libraries will cause execution errors.
+</Warning>
+
+---
+
+### 4. Help with Git and Cloning Repositories
+
+**Problem:** Trouble cloning the repo or updating to the latest version.
+
+**Solution:**
+- Install Git from [git-scm.com](https://git-scm.com/downloads).
+- Clone the repository:
+
+```bash
+git clone https://github.com/donnemartin/system-design-primer.git
+```
+
+- Pull the latest changes periodically:
+
+```bash
+git pull origin main
+```
+
+- For detailed Git usage, check out [Git Basics](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics).
+
+---
+
+### 5. Accessing Community Help
+
+If you encounter persistent issues or complex questions, the community is a valuable resource:
+
+- **GitHub Issues:** Report problems or search existing ones in the [repository issues section](https://github.com/donnemartin/system-design-primer/issues).
+- **Discussions:** Engage with other learners or contributors via GitHub Discussions if enabled.
+- **Stack Overflow:** Tag questions with `system-design-primer` or related tags for peer advice.
+- **Chat/Forum:** Some community-led informal channels might exist; links can be found on the main repo page.
+
+<Check>
+Before submitting a new issue, check if the problem is already reported to avoid duplicates.
+</Check>
+
+---
+
+## Best Practices for Troubleshooting
+
+- Document your steps and error messages clearly.
+- Try reproducing the issue in a clean environment.
+- Restart software (e.g., Jupyter notebook server) to clear transient errors.
+- Search error messages online before requesting help.
+
+## Additional Resources
+
+- [The System Design Primer README](https://github.com/donnemartin/system-design-primer/blob/main/README.md)
+- [Prerequisites & System Requirements](https://github.com/donnemartin/system-design-primer/blob/main/getting-started/introduction-setup/prerequisites-requirements.md)
+- [Installation & Accessing Materials](https://github.com/donnemartin/system-design-primer/blob/main/getting-started/introduction-setup/installation-access.md)
+- [How to use Anki flashcards effectively](https://github.com/donnemartin/system-design-primer/blob/main/guides/core-study-workflows/using-anki-flashcards-effectively.md)
+- [Where to get additional support or community help](https://github.com/donnemartin/system-design-primer/blob/main/faq/support-community-help/where-to-get-help.md)
+
+---
+
+This troubleshooting guide complements the [Getting Started](https://github.com/donnemartin/system-design-primer/tree/main/getting-started) and [FAQ](https://github.com/donnemartin/system-design-primer/tree/main/faq) sections. Be sure to review those for foundational setup and usage workflows.
+
+---
+
+**Smooth learning is key. Reach out early to the community and keep your environment updated to get the most from The System Design Primer.**
